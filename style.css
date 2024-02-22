@@ -1,21 +1,123 @@
 Body,html {
     background-color: #B6C4B6;
 }
+/*header start*/
+nav {
+    background-color: #163020; /* Set background color */
+}
 
-nav  {
-    background-color: #163020;
-    color: #EEF0E5;
-    
+ul {
+    list-style-type: none; /* Remove list bullets */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-nav ul{
-    list-style: none;
+
+li {
+    float: left; /* Make the list items float left */
 }
-.drop-down-1sem{
+
+a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Style the dropdown content (hidden by default) */
+.drop-down-1sem,
+.drop-down-2sem,
+.drop-down-3sem {
     display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.drop-down-2sem{
+
+/* Style the list items within the dropdown */
+.drop-down-1sem a,
+.drop-down-2sem a,
+.drop-down-3sem a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Show the dropdown content when hovering over the parent list item */
+li:hover .drop-down-1sem,
+li:hover .drop-down-2sem,
+li:hover .drop-down-3sem {
+    display: block;
+}
+.hamburger-menu {
     display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
 }
-.drop-down-3sem{
-    display: none;
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
 }
+
+/* Media query for small devices */
+@media screen and (max-width: 600px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        background-color: #333;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+    li {
+        float: none;
+        width: 100%; /* Make the list items take full width */
+    }
+
+    .drop-down-1sem,
+    .drop-down-2sem,
+    .drop-down-3sem {
+        position: static; /* Remove absolute positioning for dropdown content */
+        display: none;
+    }
+
+    li:hover .drop-down-1sem,
+    li:hover .drop-down-2sem,
+    li:hover .drop-down-3sem {
+        display: block;
+    }
+}
+
+
+/* Media query for tablets */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    li {
+        float: left; /* Restore floating for tablets */
+        width: auto;
+    }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1025px) {
+    .drop-down-1sem,
+    .drop-down-2sem,
+    .drop-down-3sem {
+        position: absolute; /* Restore absolute positioning for larger screens */
+    }
+}
+

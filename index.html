@@ -8,26 +8,35 @@
     <link rel="stylesheet" href="javascrip.js">
 </head>
 <header>
-    <nav>
-        <ul>
-            <li>1 semester
-            <div class="drop-down-1sem">
-                <a href="1sem-workshops.html">Workshops</a>
-                <a href="1sem-projekt.html">Projekter</a>
-            </div>
+    <div class="logo-container">
+        <img src="your-logo.png" alt="Your Logo">
+    </div>
+    <nav id="togglemenu" class="content-width hidden">
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li class="dropdown-toggle content-width" onclick="toggleDropdown('drop-down-1sem')">1 semester
+                <div class="drop-down-1sem">
+                    <a href="1sem-workshops.html">Workshops</a>
+                    <a href="1sem-projekt.html">Projekter</a>
+                </div>
             </li>
-            <li>2 semester 
+            <li class="dropdown-toggle" onclick="toggleDropdown('drop-down-2sem')">2 semester
                 <div class="drop-down-2sem">
-                <a href="2sem-workshop.html">Workshops</a>
-                <a href="2sem-projekt.html">Projekter</a>
-            </div></li>
-            <li>3 semester
+                    <a href="2sem-workshop.html">Workshops</a>
+                    <a href="2sem-projekt.html">Projekter</a>
+                </div>
+            </li>
+            <li class="dropdown-toggle" onclick="toggleDropdown('drop-down-3sem')">3 semester
                 <div class="drop-down-3sem">
                     <a href="3sem-workshop.html">Workshops</a>
                     <a href="3sem-projekt.html">Projekter</a>
                 </div>
             </li>
-            <li><a href="om-mig.html">om mig</a></li>
+            <li><a href="om-mig.html">Om mig</a></li>
         </ul>
     </nav>
 </header>
