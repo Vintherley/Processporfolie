@@ -1,123 +1,228 @@
-Body,html {
-    background-color: #B6C4B6;
-}
-/*header start*/
-nav {
-    background-color: #163020; /* Set background color */
-}
 
-ul {
-    list-style-type: none; /* Remove list bullets */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
-li {
-    float: left; /* Make the list items float left */
+body {
+  margin: 0;
 }
 
-a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+:root {
+  --bar-width: 60px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --foreground: #08330c;
+  --background: #FAEED1;
+  --cta-color:#FFE900;
+  --ekstracolor:#725E54;
+  --txt-color-nav:#FAEED1;
+  --txt-color2:#0D0C1D;
+  --hover-navbar:#157f1f; 
+  --hamburger-margin: 8px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  --fonth1:"Dancing Script", cursive;
+  --fonth2:"Lora", serif;
+  --fonth3:"Lora", serif;;
+  --font-txt:"Crimson Pro", serif ;
 }
 
-/* Style the dropdown content (hidden by default) */
-.drop-down-1sem,
-.drop-down-2sem,
-.drop-down-3sem {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
 
-/* Style the list items within the dropdown */
-.drop-down-1sem a,
-.drop-down-2sem a,
-.drop-down-3sem a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-/* Show the dropdown content when hovering over the parent list item */
-li:hover .drop-down-1sem,
-li:hover .drop-down-2sem,
-li:hover .drop-down-3sem {
-    display: block;
-}
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 3px 0;
-}
-
-/* Media query for small devices */
-@media screen and (max-width: 600px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        background-color: #333;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
+/*Mobile*/
+@media only screen and (max-width: 600px) {
+    .navbar{
+        position: relative;
+        height: 80px;
+        z-index: 50;
+      }
     .hamburger-menu {
+        --x-width: calc(var(--hamburger-height) * 1.41421356237);
+      
         display: flex;
-    }
-    li {
-        float: none;
-        width: 100%; /* Make the list items take full width */
-    }
+        flex-direction: column;
+        gap: var(--hamburger-gap);
+        width: max-content;
+        position: absolute;
+        top: var(--hamburger-margin);
+        left: var(--hamburger-margin);
+        z-index: 2;
+        cursor: pointer;
+      }
+      
+      .hamburger-menu:has(input:checked) {
+        --foreground: white;
+        --background: black;
+      }
+      
+      .hamburger-menu:has(input:focus-visible)::before,
+      .hamburger-menu:has(input:focus-visible)::after,
+      .hamburger-menu input:focus-visible {
+        border: 1px solid var(--background);
+        box-shadow: 0 0 0 1px var(--foreground);
+      }
+      
+      .hamburger-menu::before,
+      .hamburger-menu::after,
+      .hamburger-menu input {
+          content: "";
+          width: var(--bar-width);
+          height: var(--bar-height);
+          background-color: var(--txt-color2); /* Stregerne er sorte*/ 
+          border-radius: 9999px;
+          transform-origin: left center;
+          transition: opacity var(--animation-timing), width var(--animation-timing),
+            rotate var(--animation-timing), translate var(--animation-timing),
+            background-color var(--animation-timing);
+      }
+      
+      .hamburger-menu input {
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        pointer-events: none;
+      }
+      
+      .hamburger-menu:has(input:checked)::before {
+          rotate: 45deg;
+          width: var(--x-width);
+          translate: 0 calc(var(--bar-height) / -2);
+          background-color: var(--txt-color); /* Krydset er hvidt*/ 
+        }
+      
+      
+      .hamburger-menu:has(input:checked)::after {
+          rotate: -45deg;
+          width: var(--x-width);
+          translate: 0 calc(var(--bar-height) / 2);
+          background-color: var(--txt-color-nav); /* Krydset er hvidt*/ 
+      }
+      
+      .hamburger-menu input:checked {
+        opacity: 0;
+        width: 0;
+      }
+      
+      .sidebar {
+        transition: translate var(--animation-timing);
+        translate: -100%;
+        padding: 0.5rem 1rem;
+        padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+        background-color: var(--foreground);
+        color: var(--background);
+        max-width: 20rem;
+        min-height: 100vh;
+      }
+      
+      .hamburger-menu:has(input:checked) + .sidebar {
+        translate: 0;
+      }
+      
+      a{
+          text-decoration: none ;
+          color: var(--txt-color);
+          font-family: var(--fonth2);
+          font-size: 23px;
+          padding: 20px;
+          Margin: 20px 10px;
+         
+      }
+      a:hover{
+      background-color:var(--hover-navbar) ;
+      padding: 5px;
+      margin: 5px;
+      }
+      .logud {
+          position: absolute;
+          bottom: 0;
+          color: var(--txt-color); 
+          font-family: var(--fontbold); 
+          font-size: 23px; 
+          padding: 10px;
+          margin: 10px;
+          align-items: flex-end;
+      }
+      /*indhold på index*/
+      .maintitle{
+        font-family: var(--fonth1);
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: var(--txt-color2);
+        padding: 20px;
+        margin: 20px;
+        left: 20px;
+      }
+      .velkomst{
+        font-family: var(--fonth3);
+        background-color: var(--ekstracolor);
+        padding:20px
+      }
+      .cta{
+        background-color: var(--cta-color);
+        font-family: var(--fonth2);
+        padding: 10px;
+        border-radius: 3px;
+      }
+      .btn-cta{
+        text-decoration: none;
+        color: var(--txt-color2);
+        font-family: var(--fonth2);
+      }
+      .btn-cta:hover{
+        background-color: none;
+        color: var(--background);
+      }
 
-    .drop-down-1sem,
-    .drop-down-2sem,
-    .drop-down-3sem {
-        position: static; /* Remove absolute positioning for dropdown content */
-        display: none;
+      /*indhold på om mig*/
+    .om{
+        font-family: var(--fonth1);
+        color: var(--txt-color2);
+        font-size: 45px;
     }
-
-    li:hover .drop-down-1sem,
-    li:hover .drop-down-2sem,
-    li:hover .drop-down-3sem {
-        display: block;
+    .omtxt{
+        font-family: var(--font-txt);
     }
-}
-
-
-/* Media query for tablets */
-@media screen and (min-width: 601px) and (max-width: 1024px) {
-    li {
-        float: left; /* Restore floating for tablets */
-        width: auto;
+    .interesser {
+        font-family: var(--fonth3);
     }
-}
+      /*indhold på 2semester*/
 
-/* Media query for larger screens */
-@media screen and (min-width: 1025px) {
-    .drop-down-1sem,
-    .drop-down-2sem,
-    .drop-down-3sem {
-        position: absolute; /* Restore absolute positioning for larger screens */
+
     }
+/*desktop*/
+@media only screen and (min-width: 901px) {
+  .hamburger-menu {
+    display: none;
+  }
+
+  .sidebar {
+    translate: 0;
+    transition: none;
+    padding: 18px;
+    max-width: none;
+    min-height: auto;
+    background-color: var(--foreground);
+    
+  }
+
+  .sidebar nav {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .sidebar a,
+  .sidebar a {
+    text-decoration: none;
+    position: inherit;
+    margin: 0;
+    padding: 18px;
+    color: var(--txt-color);
+    font-family: var(--fontbold);
+  }
+  a:hover{
+    background-color: var(--hover-navbar);
+  }
 }
 
