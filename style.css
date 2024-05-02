@@ -15,8 +15,8 @@ body {
   --hamburger-gap: 6px;
   --foreground: #08330c;
   --background: #FAEED1;
-  --cta-color:#FFE900;
-  --ekstracolor:#725E54;
+  --cta-color:#9EE493;
+  --ekstracolor:#01baef;
   --txt-color-nav:#FAEED1;
   --txt-color2:#0D0C1D;
   --hover-navbar:#157f1f; 
@@ -187,8 +187,24 @@ body {
     .interesser {
         font-family: var(--fonth3);
     }
+    .underskirft{
+      font-family: var(--fonth1);
+    }
       /*indhold på 2semester*/
+.netværk{
+  background-color: var(--ekstracolor);
+  padding: 5px;
+  margin-left: 10px;
+}
+.overskrift{
+  font-family: var(--fonth1);
+  font-size: 35px;
 
+}
+.gruppe{
+  list-style-type: none;
+  font-family: var(--font-txt);
+}
 
     }
 /*desktop*/
